@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import Mainpage from './pages/Mainpage';
+import App from './containers/App';
+/*import Mainpage from './pages/Mainpage';*/
 
 const mainPage = document.getElementById('root');
-
-ReactDOM.render(<Mainpage />, mainPage);
+ReactDOM.render(<App />, mainPage);
 
 
 // If you want your app to work offline and load faster, you can change

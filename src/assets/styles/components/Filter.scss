@@ -1,0 +1,37 @@
+.main__filter {
+  width: 100%;
+  min-height: 750px;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  display: grid;
+  grid-template-rows: 50px repeat(4, 100px) 50px;
+  grid-gap: 15xp;
+}
+/*decdc3*/
+
+
+.main__filter-title {
+  color: #dabc89;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.filter__container {
+  padding: 10px;
+}
+
+.filter-subtitles {
+  color: #2d4059;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.main__filter-button {
+  width: 100%;
+  padding: 25px;
+}
+
+.main__filter-button button {
+  width: 100%;
+}

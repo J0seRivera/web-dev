@@ -1,0 +1,15 @@
+@import './MainContent.scss';
+.carousel {
+  /* width: 100vw; */
+  overflow: auto;
+  position: relative;
+}
+
+.carousel__container {
+  /* white-space: wrap; */
+  margin-top: 20px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

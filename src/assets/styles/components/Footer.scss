@@ -1,0 +1,24 @@
+footer{
+  color: white;
+  background-color: #052d37 ;/*#1b2127*/
+  margin-top: 50px;
+}
+
+.footer-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.footer-left {
+  justify-self: flex-start;
+}
+
+.footer-rigth {
+  justify-self: flex-end;
+}
+footer a{
+  color: white;
+
+}

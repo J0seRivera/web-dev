@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  max-width: 1110px;
+  flex: 1;
+  margin: 0 auto;
+  height: inherit;
+  flex-wrap: inherit;
+  padding: 25px;
+}
