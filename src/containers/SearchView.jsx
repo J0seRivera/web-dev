@@ -10,7 +10,7 @@ import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
 import '../assets/styles/App.scss';
 
-const App = () => (
+const SearchView = () => (
   <div className="App">
     <Header />
     <Search />
@@ -25,4 +25,4 @@ const App = () => (
   </div>
 );
 
-export default App;
+export default SearchView;

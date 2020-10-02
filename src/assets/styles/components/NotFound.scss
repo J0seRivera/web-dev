@@ -1,0 +1,45 @@
+.main > section{
+  background: linear-gradient(#21C08B, #AB88FF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*ubica los elementos de arriba a abajo*/
+  flex-direction: column;
+  padding: 0px 30px;
+  min-height: calc(100vh - 200px);
+  padding: 0;
+}
+
+.animated {
+  animation-duration: 2.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+@keyframes hinge {
+  0% {transform: rotate(0);transform-origin: top left;animation-timing-function: ease-in-out;}
+  20%, 60% {transform: rotate(80deg);transform-origin: top left;animation-timing-function: ease-in-out;}
+  40% {transform: rotate(60deg);transform-origin: top left;animation-timing-function: ease-in-out;}
+  50% {transform: rotate(60deg) translateY(0);transform-origin: top left;animation-timing-function: ease-in-out;}
+  10% {transform: translateY(600px);}
+}
+.hinge {
+  margin: 20px;
+  animation-name: hinge;
+}
+
+.main__text-404 {
+  margin-bottom: 25px;
+}
+
+.number {
+  font-size: 6em;
+  color: #fff;
+  margin: 0;
+}
+
+.main__text {
+  margin-top: 100px;
+  font-size: 2em;
+  color: #fff;
+}

@@ -1,10 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/App';
+
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+import App from './routes/App';
+
 /*import Mainpage from './pages/Mainpage';*/
 
 const mainPage = document.getElementById('root');
-ReactDOM.render(<App />, mainPage);
+ReactDOM.render(
+  <Provider>
+    <App />
+  </Provider>,
+  mainPage
+);
 
 
 // If you want your app to work offline and load faster, you can change
