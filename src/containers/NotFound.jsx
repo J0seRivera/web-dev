@@ -1,22 +1,31 @@
 import React from 'react';
+import HeaderS from '../components/HeaderS';
+import Footer from '../components/Footer';
+
+
 import '../assets/styles/components/NotFound.scss';
-import Layout from '../components/Layout';
 
 const NotFound = () => (
-  <Layout>
-    <main class="main">
+
+  <>
+    <HeaderS />
+    <main className="main">
       <section>
-        <div class="main__text-404">
-          <p class="number animated hinge">404</p>
+        <div className="main__text-404">
+          <p className="number animated hinge">404</p>
         </div>
-        <div class="main__text">
+        <div className="main__text">
           <p>
             Página no encontrada
-        </p>
+          </p>
         </div>
       </section>
     </main>
-  </Layout>
+    <Footer />
+  </>
+
+
+
 );
 
 export default NotFound;

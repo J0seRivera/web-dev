@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';

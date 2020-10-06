@@ -1,8 +1,11 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
+
 import brand from '../assets/static/name.PNG';
 import profile_pic from '../assets/static/icons/user-icon.png';
-import '../assets/styles/components/Header.scss'
+
+import '../assets/styles/components/Header.scss';
 const Header = () => (
   <header>
     <div className="container">
@@ -20,22 +23,21 @@ const Header = () => (
             <a className="link" href="#eventos">Busqueda</a>
           </li>
           <li>
-            <a className="link" href="#contacto">Como comprar</a>
-          </li>
-          <li>
             <a className="link" href="#contacto">Inventario</a>
           </li>
           <li>
             <a className="link" href="#contacto">Sobre nosotros</a>
           </li>
           <li>
-            <a className="link" href="#contacto">contacto</a>
+            <Link to='/contacto'>
+              Contacto
+            </Link>
           </li>
         </ol>
       </nav>
 
-      <div class="header__menu">
-        <div class="header__menu--profile">
+      <div className="header__menu">
+        <div className="header__menu--profile">
           <img src={profile_pic} alt="foto de perfil" />
           <p>Perfil</p>
         </div>
