@@ -6,6 +6,7 @@ import Login from '../containers/Login';
 import Register from '../containers/Register';
 import NotFound from '../containers/NotFound';
 import Contact from '../containers/Contact';
+import Aboutus from '../containers/Aboutus';
 
 const App = () => (
   <BrowserRouter>
@@ -14,6 +15,7 @@ const App = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/contacto" component={Contact} />
+      <Route exact path="/nosotros" component={Aboutus} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

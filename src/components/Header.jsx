@@ -26,7 +26,9 @@ const Header = () => (
             <a className="link" href="#contacto">Inventario</a>
           </li>
           <li>
-            <a className="link" href="#contacto">Sobre nosotros</a>
+          <Link to='/nosotros'>
+              Sobre Nosotros
+            </Link>
           </li>
           <li>
             <Link to='/contacto'>
