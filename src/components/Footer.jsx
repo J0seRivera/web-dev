@@ -3,7 +3,7 @@ import logo from '../assets/static/icoima.PNG';
 import brand from '../assets/static/name.PNG';
 import '../assets/styles/components/Footer.scss';
 const Footer = () => (
-  <footer>
+  <footer >
     <div className="container">
       <div className="footer-content">
         <div className="footer-left">
