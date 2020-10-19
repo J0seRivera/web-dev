@@ -32,10 +32,12 @@ const Contact = () => (
               <label>Sugerencias</label>
               <textarea placeholder="Escriba sus dudas o sugerencias" className="form-control" />
             </div>
+
+            <section className="main__filter-button">
+              <button type="button" className="btn btn-success">Enviar</button>
+            </section>
           </form>
-          <section className="main__filter-button">
-            <button type="button" className="btn btn-success">Enviar</button>
-          </section>
+          
         </div>
       </div>
 

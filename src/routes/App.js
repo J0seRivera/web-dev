@@ -7,6 +7,7 @@ import Register from '../containers/Register';
 import NotFound from '../containers/NotFound';
 import Contact from '../containers/Contact';
 import AboutUs from '../containers/AboutUs';
+import InsertCar from '../containers/InsertCar';
 
 const App = () => (
   <BrowserRouter>
@@ -16,6 +17,7 @@ const App = () => (
       <Route exact path="/register" component={Register} />
       <Route exact path="/contacto" component={Contact} />
       <Route exact path="/nosotros" component={AboutUs} />
+      <Route exact path="/insert" component={InsertCar} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

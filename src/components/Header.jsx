@@ -35,6 +35,11 @@ const Header = () => (
               Contacto
             </Link>
           </li>
+          <li>
+            <Link to='/insert'>
+              Registrar vehículo
+            </Link>
+          </li>
         </ol>
       </nav>
 
