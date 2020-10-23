@@ -12,13 +12,7 @@ const InsertCar = () => (
             <div className="aboutUs__Content">
                 <form role="form">
                     <div className="row">
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label className="tiform">Status</label>
-                                <input type="text" class="form-control" placeholder="state" />
-                            </div>
-                        </div>
-
+                        
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label className="tiform">Modelo del Vehículo</label>
@@ -38,13 +32,6 @@ const InsertCar = () => (
                                     <option value="">Volkswagen</option>
 
                                 </select>
-                            </div>
-                        </div>
-
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label className="tiform">Año</label>
-                                <input type="text" class="form-control" placeholder="Año" />
                             </div>
                         </div>
 
@@ -70,13 +57,7 @@ const InsertCar = () => (
                             </div>
                         </div>
 
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label className="tiform">Combustible</label>
-                                <input type="text" class="form-control" placeholder="Combustible..." />
-                            </div>
-                        </div>
-
+                        
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label className="tiform">Motor</label>
@@ -86,14 +67,21 @@ const InsertCar = () => (
 
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label className="tiform">Kilometraje</label>
-                                <input type="text" class="form-control" placeholder="Kilometraje" />
+                                <label className="tiform">Combustible</label>
+                                <input type="text" class="form-control" placeholder="Combustible..." />
                             </div>
                         </div>
 
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label className="tiform">Estado</label>
+                                <label className="tiform">Status</label>
+                                <input type="text" class="form-control" placeholder="state" />
+                            </div>
+                        </div>
+
+                        <div className="col-md-6">
+                            <div className="form-group">
+                                <label className="tiform">Estado del Vehículo</label>
                                 <select className="custom-select d-block w-100" id="country" required="">
                                     <option value="">Estado..</option>
                                     <option value="">Nuevo</option>
@@ -105,12 +93,27 @@ const InsertCar = () => (
                             </div>
                         </div>
 
-                        <div className="col-md-6">
+                        <div className="col-md-4">
+                            <div className="form-group">
+                                <label className="tiform">Año</label>
+                                <input type="text" class="form-control" placeholder="Año" />
+                            </div>
+                        </div>
+
+                        <div className="col-md-4">
+                            <div className="form-group">
+                                <label className="tiform">Kilometraje</label>
+                                <input type="text" class="form-control" placeholder="Kilometraje" />
+                            </div>
+                        </div>
+
+                        <div className="col-md-4">
                             <div className="form-group">
                                 <label className="tiform">Precio</label>
                                 <input type="text" class="form-control" placeholder="Precio" />
                             </div>
                         </div>
+
 
                         <div className="col-md-6">
                             <div className="form-group">
@@ -119,7 +122,7 @@ const InsertCar = () => (
                             </div>
                         </div>
 
-                        <div className="col-md-6">
+                        <div className="col-md-4">
                             <div className="form-group">
                                 <label className="tiform">Imagen de Referencia</label>
                                 <label for="exampleInputFile">File input</label>
@@ -130,8 +133,8 @@ const InsertCar = () => (
 
                     <section className="section__insert-button">
                         <div className="botonf">
-                            <button type="button" className="btn btn-success pull-right">Enviar</button>
-                            <button type="button" className="btn btn-danger ">Cancelar</button>
+                            <button type="submit" className="btn btn-success pull-right">Enviar</button>
+                            <button type="submit" className="btn btn-danger ">Cancelar</button>
                         </div>
                     </section>
 

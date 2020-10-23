@@ -1,4 +1,4 @@
-.carousel-item {
+.carousel-item_1 {
   background-color: #2d4059;
   width: 200px;
   height: 250px;
@@ -13,15 +13,15 @@
   margin: 30px 35px 35px 0;
 }
 
-.carousel-item:hover~.carousel-item {
+.carousel-item_1:hover~.carousel-item_1 {
   transform: translate3d(20px, 0, 0);
 }
 
-.carousel__container:hover .carousel-item {
+.carousel__container:hover .carousel-item_1 {
   opacity: 0.3;
 }
 
-.carousel__container:hover .carousel-item:hover {
+.carousel__container:hover .carousel-item_1:hover {
   transform: scale(1.25);
   opacity: 1;
 }

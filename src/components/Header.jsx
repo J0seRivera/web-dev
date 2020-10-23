@@ -23,7 +23,9 @@ const Header = () => (
             <a className="link" href="#eventos">Busqueda</a>
           </li>
           <li>
-            <a className="link" href="#contacto">Inventario</a>
+            <Link to='/catalog'>
+              Catálogo
+            </Link>
           </li>
           <li>
           <Link to='/nosotros'>
@@ -38,6 +40,11 @@ const Header = () => (
           <li>
             <Link to='/insert'>
               Registrar vehículo
+            </Link>
+          </li>
+          <li>
+            <Link to='/adduser'>
+              Registrar Usuario
             </Link>
           </li>
         </ol>

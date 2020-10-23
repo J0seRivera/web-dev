@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import Header from '../components/Header';
+import CarIni from '../components/CarIni';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import MainSection from '../components/MainSection';
@@ -14,6 +15,7 @@ import '../assets/styles/App.scss';
 const SearchView = () => (
   <div className="App">
     <Header />
+    <CarIni/>
     <Search />
     <Categories />
     <MainSection>
