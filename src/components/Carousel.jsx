@@ -11,4 +11,4 @@ const Carousel = ({ children }) => (
   </div>
 );
 
-export default Carousel;
+export default Carousel; 

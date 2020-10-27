@@ -8,9 +8,9 @@ const Contact = () => (
     <h1 className="Contact__title" align="center">Ingresa tus datos, para realizar la Consulta</h1>
 
     <div className="container" >
-
       <div className="main__content">
         <div className="aboutUs__Content">
+          
           <form>
             <div className="md-3">
               <label>Nombres</label>
@@ -34,7 +34,7 @@ const Contact = () => (
             </div>
 
             <section className="main__filter-button">
-              <button type="button" className="btn btn-success">Enviar</button>
+              <button type="sucess" className="btn btn-success">Enviar</button>
             </section>
           </form>
           
