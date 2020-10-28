@@ -12,22 +12,17 @@ import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
 import '../assets/styles/App.scss';
 import Favorites from '../components/Favorites';
+import useInitialState from '../hooks/useInitialState';
 
+const API = 'http://localhost:3000/initalState';
 const SearchView = () => {
-  const [vehicles, setVehicles] = useState({ mylist: [], trends: [], originals: [] });
-
-  useEffect(() => {
-    fetch("http://localhost:3000/initalState")
-      .then(response => response.json())
-      .then(data => setVehicles(data));
-  }, []);
-  console.log(vehicles);
+  const initialState = useInitialState(API);
   return (
     <div className="App">
       <Header />
       <CarIni />
       <Search />
-      {vehicles.mylist.length > 0 &&
+      {initialState.mylist.length > 0 &&
         <Favorites />
       }
 
@@ -36,7 +31,7 @@ const SearchView = () => {
       <MainSection>
         <Filter />
         <Carousel>
-          {vehicles.trends.map(item =>
+          {initialState.trends.map(item =>
             <CarouselItem key={item.id}{...item} />
           )}
         </Carousel>
