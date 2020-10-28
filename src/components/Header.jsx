@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -52,16 +53,7 @@ const Header = (props) => {
                 Contacto
             </Link>
             </li>
-            <li>
-              <Link to='/insert'>
-                Registrar vehículo
-            </Link>
-            </li>
-            <li>
-              <Link to='/adduser'>
-                Registrar Usuario
-            </Link>
-            </li>
+            
           </ol>
         </nav>
 
@@ -78,6 +70,21 @@ const Header = (props) => {
             {hasUser ?
               <>
                 <li><a href="/">{user.name}</a></li>
+                <li>
+            <Link to='/'>
+              Ver Perfil
+            </Link>
+          </li>
+          <li>
+            <Link to='/adduser'>
+              Agregar Nuevo Usuario
+            </Link>
+          </li>
+          <li>
+            <Link to='/insert'>
+              Agregar Nuevo Vehículo
+            </Link>
+          </li>
                 <li>
                   <a href='#logout' onClick={handleLogout}>Cerrar Sesión</a>
                 </li>
@@ -109,3 +116,4 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+

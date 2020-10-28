@@ -1,39 +1,100 @@
+
 import React from 'react';
 import '../assets/styles/components/Catalog.scss';
+import { Link } from 'react-router-dom';
 
 const ListCar = () => (
     <>
-
-        <div className="responsive">
-            <div className="gallery">
-                <a target="_blank" href="img_5terre.jpg">
-                    <img src="https://s3.amazonaws.com/gt7sp-prod/livery/69/31/36/5846253973614363169_23.jpg" alt="Cinque Terre" width="600" height="400" />
-                </a>
-                <div className="card-body">
-                <h5 class="card-title">Volksvagen VBochido 2020</h5>
-                <div>Q.3000</div>
-                    <a href="#" class="btn btn-primary">Más Informmación</a>
-                </div>
+        <div className="comple" >
+        <div className="media" >
+            <Link to="details">
+            <img src="https://s3.amazonaws.com/gt7sp-prod/livery/69/31/36/5846253973614363169_23.jpg" className="listi" href="details" alt="..." />
+            </Link>
+            <div className="media-body">
+                <h5 className="mt-0" href="details">Media heading</h5>
+            
+                    Cras sit amet nibh libero, in gr
+            </div>
             </div>
         </div>
-
-        <div className="responsive">
-            <div className="gallery">
-                <a target="_blank" href="img_5terre.jpg">
-                    <img src="https://s3.amazonaws.com/gt7sp-prod/livery/69/31/36/5846253973614363169_23.jpg" alt="Cinque Terre" width="600" height="400" />
-                </a>
-                <div className="card-body">
-                <h5 class="card-title">Volksvagen VBochido 2020</h5>
-                <div>Q.3000</div>
-                    <a href="#" class="btn btn-primary">Más Informmación</a>
-                </div>
+        <div className="comple" >
+        <div className="media" >
+            <Link to="details">
+            <img src="https://s3.amazonaws.com/gt7sp-prod/livery/69/31/36/5846253973614363169_23.jpg" className="listi" href="details" alt="..." />
+            </Link>
+            <div className="media-body">
+                <h5 className="mt-0" href="details">Media heading</h5>
+            
+                    Cras sit amet nibh libero, in gr
+            </div>
             </div>
         </div>
-
+        <div className="comple" >
+        <div className="media" >
+            <Link to="details">
+            <img src="https://s3.amazonaws.com/gt7sp-prod/livery/69/31/36/5846253973614363169_23.jpg" className="listi" href="details" alt="..." />
+            </Link>
+            <div className="media-body">
+                <h5 className="mt-0" href="details">Media heading</h5>
+            
+                    Cras sit amet nibh libero, in gr
+            </div>
+            </div>
+        </div>
+        <div className="comple" >
+        <div className="media" >
+            <Link to="details">
+            <img src="https://s3.amazonaws.com/gt7sp-prod/livery/69/31/36/5846253973614363169_23.jpg" className="listi" href="details" alt="..." />
+            </Link>
+            <div className="media-body">
+                <h5 className="mt-0" href="details">Media heading</h5>
+            
+                    Cras sit amet nibh libero, in gr
+            </div>
+            </div>
+        </div>
+        <div className="comple" >
+        <div className="media" >
+            <Link to="details">
+            <img src="https://s3.amazonaws.com/gt7sp-prod/livery/69/31/36/5846253973614363169_23.jpg" className="listi" href="details" alt="..." />
+            </Link>
+            <div className="media-body">
+                <h5 className="mt-0" href="details">Media heading</h5>
+            
+                    Cras sit amet nibh libero, in gr
+            </div>
+            </div>
+        </div>
+        <div className="comple" >
+        <div className="media" >
+            <Link to="details">
+            <img src="https://s3.amazonaws.com/gt7sp-prod/livery/69/31/36/5846253973614363169_23.jpg" className="listi" href="details" alt="..." />
+            </Link>
+            <div className="media-body">
+                <h5 className="mt-0" href="details">Media heading</h5>
+            
+                    Cras sit amet nibh libero, in gr
+            </div>
+            </div>
+        </div>
+        <div className="comple" >
+        <div className="media" >
+            <Link to="details">
+            <img src="https://s3.amazonaws.com/gt7sp-prod/livery/69/31/36/5846253973614363169_23.jpg" className="listi" href="details" alt="..." />
+            </Link>
+            <div className="media-body">
+                <h5 className="mt-0" href="details">Media heading</h5>
+            
+                    Cras sit amet nibh libero, in gr
+            </div>
+            </div>
+        </div>
         
+
 
     </>
 
 );
+
 
 export default ListCar;

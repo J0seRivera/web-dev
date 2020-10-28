@@ -13,6 +13,30 @@
   margin: 25px;
 }
 
-.listi{
-  background-color: white;
+
+
+.bann{
+  width: 1349px;
+  height: 400px;
 }
+
+.picaut{
+  width: 1000px;
+  height: 700px;
+}
+
+.centro{
+  width: 100%;
+  height: 100vh;
+  display: flex ;
+  justify-content: center;
+  align-items:center;
+}
+
+.dentro{
+  width: 800px;
+  height: 500px;
+  border-radius: 7px;
+  background: tomato;
+}
+
