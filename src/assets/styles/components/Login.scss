@@ -15,8 +15,8 @@
     border-radius: 40px;
     color: white;
     padding: 60px 68px 40px;
-    // min-height: 700px;
-    // width: 300px;
+    min-height: 700px;
+    //width: 300px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -55,7 +55,7 @@
     margin-bottom: 10px;
   }
 
-  .login__container--social-media > div > imga {
+  .login__container--social-media > div > img {
     width: 30px;
     margin-right: 10px;
   }
@@ -88,4 +88,47 @@
     text-decoration: underline;
   }
 
-  
+.Login__input {
+  background-color: transparent;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 2px solid #f2f2f2;
+  font-family: 'Mulish', sans-serif;
+  margin-bottom: 20px;
+  padding: 0px 20px;
+  outline: none;
+  height: 50px;
+  color: white;
+  border-radius: 10px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+ // -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+::placeholder {
+  color: white;
+}
+
+.Login__button {
+  background-color: rgba(255, 255, 255, .1);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  letter-spacing: 1px;
+  margin: 10px 0;
+}

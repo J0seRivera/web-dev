@@ -31,19 +31,19 @@ const Login = props => {
           <form action="" className="login__container--form" onSubmit={handleSubmit}>
             <input
               name="email"
-              className="input"
+              className="Login__input"
               type="text"
               placeholder="Correo"
               onChange={handleInput}
             />
             <input
               name="password"
-              className="input"
+              className="Login__input"
               type="password"
               placeholder="Contraseña"
               onChange={handleInput}
             />
-            <button className="button">Iniciar sesion</button>
+            <button className="Login__button">Iniciar sesion</button>
             <div className="login__container--remember-me">
               <label>
                 <input type="checkbox" id="cbox1" value="checkbox" />Recuérdame
