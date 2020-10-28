@@ -1,11 +1,11 @@
 import React from 'react';
 import '../assets/styles/components/Categories.scss';
 
-const recientes = 'Autos recientemente ingresados';
-const Categories = () => (
+
+const Categories = ({ title }) => (
 
   <div className="container categories">
-    <h3 className="categories__title">{recientes}</h3>
+    <h3 className="categories__title">{title}</h3>
   </div>
 );
 

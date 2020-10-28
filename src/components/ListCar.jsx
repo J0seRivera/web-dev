@@ -1,3 +1,4 @@
+
 import React from 'react';
 import '../assets/styles/components/Catalog.scss';
 import { Link } from 'react-router-dom';
@@ -94,5 +95,6 @@ const ListCar = () => (
     </>
 
 );
+
 
 export default ListCar;

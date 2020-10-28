@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const CarIni = () => (
@@ -18,5 +19,6 @@ const CarIni = () => (
     </div>
 
 );
+
 
 export default CarIni;
