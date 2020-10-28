@@ -9,7 +9,7 @@ const CarouselItem = () => (
         alt="auto" />
       <div className="carousel-item__details">
         <div>
-          <img src={plus} alt="plus icon" />
+          <img src={plus} alt="plus icon" href="details" />
         </div>
         <p className="carousel-item__details--title">Tesla</p>
         <p className="carousel-item__details--subtitle">Roadster</p>
@@ -58,6 +58,49 @@ const CarouselItem = () => (
         <p className="carousel-item__details--subtitle">2018</p>
       </div>
     </div>
+
+    <div className="carousel-item_1">
+      <img className="carousel-item__img"
+        src="https://cdn.motor1.com/images/mgl/42xwo/s3/toyota-hilux-mako---nova-zelandia.jpg"
+        alt="auto" />
+      <div className="carousel-item__details">
+        <div>
+          <img src={plus} alt="plus icon" />
+        </div>
+        <p className="carousel-item__details--title">Audi</p>
+        <p className="carousel-item__details--subtitle">Saloon</p>
+        <p className="carousel-item__details--subtitle">2018</p>
+      </div>
+    </div>
+
+    <div className="carousel-item_1">
+      <img className="carousel-item__img"
+        src="https://cdn.motor1.com/images/mgl/42xwo/s3/toyota-hilux-mako---nova-zelandia.jpg"
+        alt="auto" />
+      <div className="carousel-item__details">
+        <div>
+          <img src={plus} alt="plus icon" />
+        </div>
+        <p className="carousel-item__details--title">Audi</p>
+        <p className="carousel-item__details--subtitle">Saloon</p>
+        <p className="carousel-item__details--subtitle">2018</p>
+      </div>
+    </div>
+
+    <div className="carousel-item_1">
+      <img className="carousel-item__img"
+        src="https://cdn.motor1.com/images/mgl/42xwo/s3/toyota-hilux-mako---nova-zelandia.jpg"
+        alt="auto" />
+      <div className="carousel-item__details">
+        <div>
+          <img src={plus} alt="plus icon" />
+        </div>
+        <p className="carousel-item__details--title">Audi</p>
+        <p className="carousel-item__details--subtitle">Saloon</p>
+        <p className="carousel-item__details--subtitle">2018</p>
+      </div>
+    </div>
+
 
     
 

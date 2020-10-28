@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import 'jquery/dist/jquery.slim.min.js';
+import 'bootstrap/dist/js/bootstrap.bundle.js'
 
 
 import App from './routes/App';

@@ -6,23 +6,24 @@ const InsertCar = () => (
     <>
         <Header />
         <h1 className="Contact__title" align="center">Ingreso de nuevos Automóviles</h1>
-
+        <div className="row">
+        <div className="col-md-2"></div>
+        <div className="col-md-8">
         <div className="container" >
-
+        <div className="main__content">
             <div className="aboutUs__Content">
                 <form role="form">
-                    <div className="row">
-                        
+                    <div className="row">  
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label className="tiform">Modelo del Vehículo</label>
+                                <label >Modelo del Vehículo</label>
                                 <input type="text" class="form-control" placeholder="Modelo..." />
                             </div>
                         </div>
 
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label className="tiform">Marca</label>
+                                <label >Marca</label>
                                 <select className="custom-select d-block w-100" id="country" required="">
                                     <option value="">Marca...</option>
                                     <option value="">Audi</option>
@@ -37,14 +38,14 @@ const InsertCar = () => (
 
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label className="tiform">Color</label>
+                                <label >Color</label>
                                 <input type="text" class="form-control" placeholder="Color" />
                             </div>
                         </div>
 
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label className="tiform">Tipo</label>
+                                <label >Tipo</label>
                                 <select className="custom-select d-block w-100" id="country" required="">
                                     <option value="">Type...</option>
                                     <option value="">Sedan</option>
@@ -60,28 +61,33 @@ const InsertCar = () => (
                         
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label className="tiform">Motor</label>
+                                <label >Motor</label>
                                 <input type="text" class="form-control" placeholder="motor" />
                             </div>
                         </div>
 
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label className="tiform">Combustible</label>
+                                <label >Combustible</label>
                                 <input type="text" class="form-control" placeholder="Combustible..." />
                             </div>
                         </div>
 
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label className="tiform">Status</label>
-                                <input type="text" class="form-control" placeholder="state" />
+                                <label >Transmisión</label>
+                                <select className="custom-select d-block w-100" id="country" required="">
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="">Automático</option>
+                                    <option value="">Manual</option>
+                                    <option value="">SemiAutomático</option>
+                                </select>
                             </div>
                         </div>
 
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label className="tiform">Estado del Vehículo</label>
+                                <label >Estado del Vehículo</label>
                                 <select className="custom-select d-block w-100" id="country" required="">
                                     <option value="">Estado..</option>
                                     <option value="">Nuevo</option>
@@ -95,21 +101,21 @@ const InsertCar = () => (
 
                         <div className="col-md-4">
                             <div className="form-group">
-                                <label className="tiform">Año</label>
+                                <label >Año</label>
                                 <input type="text" class="form-control" placeholder="Año" />
                             </div>
                         </div>
 
                         <div className="col-md-4">
                             <div className="form-group">
-                                <label className="tiform">Kilometraje</label>
+                                <label >Kilometraje</label>
                                 <input type="text" class="form-control" placeholder="Kilometraje" />
                             </div>
                         </div>
 
                         <div className="col-md-4">
                             <div className="form-group">
-                                <label className="tiform">Precio</label>
+                                <label >Precio</label>
                                 <input type="text" class="form-control" placeholder="Precio" />
                             </div>
                         </div>
@@ -117,16 +123,15 @@ const InsertCar = () => (
 
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label className="tiform">Comentarios</label>
+                                <label >Comentarios</label>
                                 <textarea placeholder="Escriba sus dudas o sugerencias" className="form-control" />
                             </div>
                         </div>
 
                         <div className="col-md-4">
                             <div className="form-group">
-                                <label className="tiform">Imagen de Referencia</label>
-                                <label for="exampleInputFile">File input</label>
-                                <input type="file" id="exampleInputFile" className="tiform" />
+                                <label >Imagen de Referencia</label>
+                                <input type="file" id="exampleInputFile"  />
                             </div>
                         </div>
                     </div>
@@ -140,6 +145,9 @@ const InsertCar = () => (
 
                 </form>
             </div>
+            </div>
+        </div>
+        </div>
         </div>
         <Footer />
     </>

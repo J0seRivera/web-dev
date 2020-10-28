@@ -38,15 +38,11 @@ const Header = () => (
             </Link>
           </li>
           <li>
-            <Link to='/insert'>
-              Registrar vehículo
+            <Link to='/register'>
+              Iniciar Sesión
             </Link>
           </li>
-          <li>
-            <Link to='/adduser'>
-              Registrar Usuario
-            </Link>
-          </li>
+          
         </ol>
       </nav>
 
@@ -56,13 +52,25 @@ const Header = () => (
           <p>Perfil</p>
         </div>
 
-        <ul className="header_menu--container">
-          <li>
-            <a href="/">Cuenta</a>
+        <ul className="header_menu--container" >
+        <li>
+            <Link to='/'>
+              Ver Perfil
+            </Link>
           </li>
           <li>
-            <Link to='/register'>
-              Iniciar sesión
+            <Link to='/adduser'>
+              Agregar Nuevo Usuario
+            </Link>
+          </li>
+          <li>
+            <Link to='/insert'>
+              Agregar Nuevo Vehículo
+            </Link>
+          </li>
+          <li>
+            <Link to='/'>
+              Cerrar sesión
             </Link>
           </li>
         </ul>

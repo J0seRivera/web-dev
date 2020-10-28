@@ -1,16 +1,16 @@
 .carousel-item_1 {
   background-color: #2d4059;
-  width: 200px;
-  height: 250px;
+  width: 250px;
+  height: 150px;
   border-radius: 20px;
   overflow: hidden;
   justify-content: space-between;
   display: inline-block;
   cursor: pointer;
   transition: 450ms all;
-  transform-origin: center left;
+  transform-origin:35% 50%;
   position: relative;
-  margin: 30px 35px 35px 0;
+  margin: 30px 25px 5px 0;
 }
 
 .carousel-item_1:hover~.carousel-item_1 {
@@ -27,8 +27,8 @@
 }
 
 .carousel-item__img {
-  width: 200px;
-  height: 250px;
+  width: 250px;
+  height: 150px;
   object-fit: cover;
 }
 

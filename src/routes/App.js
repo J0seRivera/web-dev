@@ -10,6 +10,7 @@ import Contact from '../containers/Contact';
 import AboutUs from '../containers/AboutUs';
 import InsertCar from '../containers/InsertCar';
 import AddUser from '../containers/AddUser';
+import ShowDetails from '../containers/ShowDetails';
 
 const App = () => (
   <BrowserRouter>
@@ -22,8 +23,9 @@ const App = () => (
       <Route exact path="/nosotros" component={AboutUs} />
       <Route exact path="/insert" component={InsertCar} />
       <Route exact path="/adduser" component={AddUser} />
+      <Route exact path="/details" component={ShowDetails} />
       <Route component={NotFound} />
     </Switch>
-  </BrowserRouter>
+  </BrowserRouter> 
 );
 export default App;
