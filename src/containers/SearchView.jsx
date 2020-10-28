@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import Header from '../components/Header';
@@ -14,15 +15,15 @@ import '../assets/styles/App.scss';
 import Favorites from '../components/Favorites';
 import useInitialState from '../hooks/useInitialState';
 
-const API = 'http://localhost:3000/initalState';
-const SearchView = () => {
-  const initialState = useInitialState(API);
+//const API = 'http://localhost:3000/initalState';
+const SearchView = ({ myList, trends }) => {
+  //const initialState = useInitialState(API);
   return (
     <div className="App">
       <Header />
       <CarIni />
       <Search />
-      {initialState.mylist.length > 0 &&
+      {myList.length > 0 &&
         <Favorites />
       }
 
@@ -31,7 +32,7 @@ const SearchView = () => {
       <MainSection>
         <Filter />
         <Carousel>
-          {initialState.trends.map(item =>
+          {trends.map(item =>
             <CarouselItem key={item.id}{...item} />
           )}
         </Carousel>
@@ -41,4 +42,11 @@ const SearchView = () => {
   );
 }
 
-export default SearchView;
+const mapStateToProps = state => {
+  return {
+    myList: state.myList,
+    trends: state.trends,
+  };
+};
+
+export default connect(mapStateToProps, null)(SearchView);
