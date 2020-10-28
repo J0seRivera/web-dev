@@ -1,19 +1,19 @@
 import React from 'react';
 import '../assets/styles/components/CarouselItem.scss';
 import plus from '../assets/static/icons/plus-icon.png';
-const CarouselItem = () => (
+const CarouselItem = ({ cover, title, year }) => (
   <>
     <div className="carousel-item_1">
       <img className="carousel-item__img"
-        src="https://s1.eestatic.com/2017/11/17/motor/coches/tesla-motors/Tesla_Roadster-Coche_electrico-Tesla_Motors_262735969_54380152_1024x576.jpg"
-        alt="auto" />
+        src={cover}
+        alt={title} />
       <div className="carousel-item__details">
         <div>
           <img src={plus} alt="plus icon" />
         </div>
-        <p className="carousel-item__details--title">Tesla</p>
-        <p className="carousel-item__details--subtitle">Roadster</p>
-        <p className="carousel-item__details--subtitle">2020</p>
+        <p className="carousel-item__details--title">{title}</p>
+        <p className="carousel-item__details--subtitle">{title}</p>
+        <p className="carousel-item__details--subtitle">{year}</p>
       </div>
     </div>
 
@@ -59,9 +59,9 @@ const CarouselItem = () => (
       </div>
     </div>
 
-    
 
-    
+
+
   </>
 );
 
