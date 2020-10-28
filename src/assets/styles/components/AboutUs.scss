@@ -1,3 +1,9 @@
+.aboutUs__container {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 260px);
+}
+
 .aboutUs__Content {
   padding: 25px;
 
@@ -11,13 +17,6 @@
 .contform{
   align-content: center;
   margin: 25px;
-}
-
-
-
-.bann{
-  width: 1349px;
-  height: 400px;
 }
 
 .picaut{
