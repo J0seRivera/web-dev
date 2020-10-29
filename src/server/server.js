@@ -1,7 +1,23 @@
 /* eslint-disable global-require */
 import express from 'express';
+
+const app = express();
+app.get('*', (req, res) => {
+  res.send({ hello: 'express' });
+});
+
+
+app.listen(3000, (err) => {
+  if (err) console.log(err);
+  else console.log('Server running 3000');
+});
+
+
+
+/*
 import dotenv from 'dotenv';
 import webpack from 'webpack';
+import { expr } from 'jquery';
 
 dotenv.config();
 
@@ -26,7 +42,7 @@ app.get('*', (req, res) => {
   <!DOCTYPE html>
   <html>
     <head>
-    <link rel="stylesheet" href="assets/app.css" type="text/css"/> 
+    <link rel="stylesheet" href="assets/app.css" type="text/css"/>
       <title>Platzi Video</title>
     </head>
     <body>
@@ -41,3 +57,4 @@ app.listen(PORT, (err) => {
   if (err) console.log(err);
   else console.log('Server running on port 3000');
 });
+*/
