@@ -23,3 +23,7 @@ export const registerRequest = payload => ({
   payload,
 });
 
+export const getVehicleSource = payload => ({
+  type: 'GET_VEHICLE_SOURCE',
+  payload,
+});

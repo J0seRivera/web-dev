@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getVehicleSource } from '../actions';
+import { Redirect } from 'react-router-dom';
 import Carousel from '../components/Carousel';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -14,15 +17,21 @@ import { RiSettings2Fill } from "react-icons/ri";
 import { MdDescription } from "react-icons/md";
 import { AiFillControl } from "react-icons/ai";
 import '../assets/styles/components/ShowDetails.scss';
-const ShowDetails = () => {
 
-    return (
+const ShowDetails = props => {
+    const { id } = props.match.params;
+    const hasViewing = Object.keys(props.viewing).length > 0;
+    useEffect(() => {
+        props.getVehicleSource(id);
+    }, []);
+
+    return hasViewing ? (
         <>
             <Header />
             <div className="detalles__container">
                 <Carousel>
                     <div className="row">
-                        <h2>KIA Picanto 2005</h2>
+                        <h2>{props.viewing.title}</h2>
                     </div>
                     <div className="row">
                         <div className="col-md-8">
@@ -129,7 +138,15 @@ const ShowDetails = () => {
             </div>
             <Footer />
         </>
-    );
+    ) : <Redirect to="/404" />;
+}
+const mapStateToProps = state => {
+    return {
+        viewing: state.viewing,
+    }
 }
 
-export default ShowDetails;
+const mapDispatchToProps = {
+    getVehicleSource,
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ShowDetails);

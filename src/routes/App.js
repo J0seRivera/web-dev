@@ -23,9 +23,9 @@ const App = () => (
       <Route exact path="/nosotros" component={AboutUs} />
       <Route exact path="/insert" component={InsertCar} />
       <Route exact path="/adduser" component={AddUser} />
-      <Route exact path="/details" component={ShowDetails} />
+      <Route exact path="/details/:id" component={ShowDetails} />
       <Route component={NotFound} />
     </Switch>
-  </BrowserRouter> 
+  </BrowserRouter>
 );
 export default App;
