@@ -1,8 +1,6 @@
 import React from 'react';
 import HeaderS from '../components/HeaderS';
 import Footer from '../components/Footer';
-
-
 import '../assets/styles/components/NotFound.scss';
 
 const NotFound = () => (
@@ -21,7 +19,7 @@ const NotFound = () => (
         </div>
       </section>
     </main>
-    <Footer />
+    <Footer isNotFound />
   </>
 
 

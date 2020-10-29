@@ -1,13 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 import logo from '../assets/static/icoima.PNG';
-import brand from '../assets/static/name.PNG';
 import '../assets/styles/components/Footer.scss';
 const Footer = props => {
-  const { isLogin, isRegister } = props;
+  const { isLogin, isNotFound } = props;
   const headerClass = classNames('header', {
     isLogin,
-    isRegister,
+    isNotFound,
   });
   return (
     <footer className={headerClass}>
