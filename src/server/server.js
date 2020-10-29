@@ -14,7 +14,7 @@ import initialState from '../frontend/initialState';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
 import ico from '../../public/favicon.ico';
-import { idText } from 'typescript';
+
 dotenv.config();
 
 const { ENV, PORT } = process.env;

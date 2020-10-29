@@ -6,20 +6,18 @@ import Carousel from '../components/Carousel';
 import ListCar from '../components/ListCar';
 import Footer from '../components/Footer';
 
-
-
 const Catalog = () => (
-    <>
+  <>
     <Header />
     <MainSection>
       <Filter />
       <Carousel>
-      <ListCar/>
+        <ListCar />
       </Carousel>
     </MainSection>
     <Footer />
-    </>
-    
+  </>
+
 );
 
 export default Catalog;

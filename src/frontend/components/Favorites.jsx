@@ -7,22 +7,23 @@ import '../assets/styles/components/Favorites.scss';
 
 const Favorites = ({ myList }) => {
   return (
-    <section className="container__favorites">
-      <Categories title="Mi lista de Favoritos" />
+    <section className='container__favorites'>
+      <Categories title='Mi lista de Favoritos' />
       <Carousel>
-        {myList.map(item =>
+        {myList.map((item) => (
           <CarouselItem
             key={item.id}
+            // eslint-disable-next-line react/jsx-props-no-spreading
             {...item}
             isList
           />
-        )}
+        ))}
       </Carousel>
     </section>
-  )
+  );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     myList: state.myList,
   };

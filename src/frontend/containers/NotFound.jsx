@@ -7,12 +7,12 @@ const NotFound = () => (
 
   <>
     <HeaderS />
-    <main className="main">
+    <main className='main'>
       <section>
-        <div className="main__text-404">
-          <p className="number animated hinge">404</p>
+        <div className='main__text-404'>
+          <p className='number animated hinge'>404</p>
         </div>
-        <div className="main__text">
+        <div className='main__text'>
           <p>
             Página no encontrada
           </p>
@@ -21,8 +21,6 @@ const NotFound = () => (
     </main>
     <Footer isNotFound />
   </>
-
-
 
 );
 

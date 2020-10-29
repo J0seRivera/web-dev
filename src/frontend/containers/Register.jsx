@@ -1,64 +1,66 @@
+/* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { registerRequest } from '../actions';
 import { Link } from 'react-router-dom';
+import { registerRequest } from '../actions';
 import '../assets/styles/components/Login.scss';
 import Layout from '../components/Layout';
-const Register = props => {
+
+const Register = (props) => {
   const [form, setValues] = useState({
     name: '',
     email: '',
     password: '',
   });
 
-  const handleInput = event => {
+  const handleInput = (event) => {
     setValues({
       ...form,
-      [event.target.name]: event.target.value
-    })
+      [event.target.name]: event.target.value,
+    });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     props.registerRequest(form);
     props.history.push('/');
-  }
+  };
   return (
     <Layout>
-      <section className="login">
-        <section className="login__container">
+      <section className='login'>
+        <section className='login__container'>
           <h2>Regístrate</h2>
-          <form action="" className="login__container--form" onSubmit={handleSubmit}>
+          <form action='' className='login__container--form' onSubmit={handleSubmit}>
             <input
-              name="name"
-              className="Login__input"
-              type="text"
-              placeholder="Nombre"
+              name='name'
+              className='Login__input'
+              type='text'
+              placeholder='Nombre'
               onChange={handleInput}
             />
             <input
-              name="email"
-              className="Login__input"
-              type="text"
-              placeholder="Correo"
+              name='email'
+              className='Login__input'
+              type='text'
+              placeholder='Correo'
               onChange={handleInput}
             />
             <input
-              name="password"
-              className="Login__input"
-              type="password"
-              placeholder="Contraseña"
+              name='password'
+              className='Login__input'
+              type='password'
+              placeholder='Contraseña'
               onChange={handleInput}
             />
-            <button className="Login__button">Registrarme</button>
+            <button className='Login__button'>Registrarme</button>
           </form>
-          <div className="login__container--inicio">
+          <div className='login__container--inicio'>
             <Link to='/login'>Iniciar sesión</Link>
           </div>
         </section>
       </section>
     </Layout>
-  )
+  );
 };
 
 const mapDispatchToProps = {

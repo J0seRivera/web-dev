@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -84,9 +86,9 @@ const Header = (props) => {
                 </li>
               </>
             ) : (
-                <li>
-                  <Link to='/login'>Iniciar Sesión</Link>
-                </li>
+              <li>
+                <Link to='/login'>Iniciar Sesión</Link>
+              </li>
               )}
           </ul>
         </div>

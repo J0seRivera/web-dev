@@ -1,9 +1,9 @@
 import React from 'react';
-import HeaderS from '../components/HeaderS';
-import Footer from '../components/Footer';
+import HeaderS from './HeaderS';
+import Footer from './Footer';
 
 const Layout = ({ children }) => (
-  <div className="App">
+  <div className='App'>
     <HeaderS />
     {children}
     <Footer isLogin />
