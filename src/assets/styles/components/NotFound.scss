@@ -1,12 +1,12 @@
 .main > section{
-  background: linear-gradient(#21C08B, #AB88FF);
+  background: linear-gradient(#052d37, #AB88FF);
   display: flex;
   align-items: center;
   justify-content: center;
   /*ubica los elementos de arriba a abajo*/
   flex-direction: column;
   padding: 0px 30px;
-  min-height: calc(100vh - 300px);
+  min-height: calc(100vh - 225px);
   padding: 0;
 }
 

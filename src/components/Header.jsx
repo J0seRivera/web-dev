@@ -2,28 +2,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import gravatar from '../utils/gravatar';
 import { logoutRequest } from '../actions';
 import PropTypes from 'prop-types';
 import brand from '../assets/static/name.PNG';
 import profile_pic from '../assets/static/icons/user-icon.png';
-
 import '../assets/styles/components/Header.scss';
 const Header = (props) => {
   const { user } = props;
   const hasUser = Object.keys(user).length > 0;
 
-  const handleLogout = () => {
-    props.logoutRequest({
-    })
-  }
-
-  // const headerClass = classNames('header', {
-  //   isLogin,
-  //   isRegister,
-  // })
   return (
-    <header>
+    <header >
       <div className="container">
         <figure className="logo">
           <Link to='/' >
