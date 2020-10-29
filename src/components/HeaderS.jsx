@@ -3,7 +3,7 @@ import brand from '../assets/static/name.PNG';
 import { Link } from 'react-router-dom';
 //import '../assets/styles/components/Header.scss'
 const HeaderS = () => (
-  <header>
+  <header className="header__login">
     <div className="container">
       <figure className="logo">
         <Link to='/'>

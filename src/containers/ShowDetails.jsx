@@ -17,6 +17,7 @@ import { RiSettings2Fill } from "react-icons/ri";
 import { MdDescription } from "react-icons/md";
 import { AiFillControl } from "react-icons/ai";
 import '../assets/styles/components/ShowDetails.scss';
+import NotFound from './NotFound';
 
 const ShowDetails = props => {
     const { id } = props.match.params;
@@ -138,7 +139,7 @@ const ShowDetails = props => {
             </div>
             <Footer />
         </>
-    ) : <Redirect to="/404" />;
+    ) : <NotFound />;
 }
 const mapStateToProps = state => {
     return {

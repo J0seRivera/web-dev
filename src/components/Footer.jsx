@@ -1,24 +1,31 @@
 import React from 'react';
+import classNames from 'classnames';
 import logo from '../assets/static/icoima.PNG';
 import brand from '../assets/static/name.PNG';
 import '../assets/styles/components/Footer.scss';
-const Footer = () => (
-  <footer >
-    <div className="container">
-      <div className="footer-content">
-        <div className="footer-left">
-          <img src={logo} alt="logo" width="50" />
-          <img src={brand} height="100" alt="logo" />
-        </div>
+const Footer = props => {
+  const { isLogin, isRegister } = props;
+  const headerClass = classNames('header', {
+    isLogin,
+    isRegister,
+  });
+  return (
+    <footer className={headerClass}>
+      <div className="container">
+        <div className="footer-content">
+          <div className="footer-left">
+            <img src={logo} alt="logo" width="50" />
+          </div>
 
-        <div className="footer-rigth">
-          <p>
-            Design with ❤ by <a href="/" target="_blank">UMGDev</a>
-          </p>
+          <div className="footer-rigth">
+            <p>
+              Design with ❤ by <a href="/" target="_blank">UMGDev</a>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+}
 
 export default Footer;
