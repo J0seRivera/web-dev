@@ -53,7 +53,7 @@ const Header = (props) => {
                 Contacto
             </Link>
             </li>
-            
+
           </ol>
         </nav>
 
@@ -69,22 +69,22 @@ const Header = (props) => {
           <ul className="header_menu--container">
             {hasUser ?
               <>
-                <li><a href="/">{user.name}</a></li>
+                <li><a href="#">{user.name || user.email}</a></li>
                 <li>
-            <Link to='/'>
-              Ver Perfil
-            </Link>
-          </li>
-          <li>
-            <Link to='/adduser'>
-              Agregar Nuevo Usuario
-            </Link>
-          </li>
-          <li>
-            <Link to='/insert'>
-              Agregar Nuevo Vehículo
-            </Link>
-          </li>
+                  <Link to='/'>
+                    Ver Perfil
+                </Link>
+                </li>
+                <li>
+                  <Link to='/adduser'>
+                    Agregar Nuevo Usuario
+                </Link>
+                </li>
+                <li>
+                  <Link to='/insert'>
+                    Agregar Nuevo Vehículo
+                </Link>
+                </li>
                 <li>
                   <a href='#logout' onClick={handleLogout}>Cerrar Sesión</a>
                 </li>
