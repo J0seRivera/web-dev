@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 require('dotenv').config();
 const isDev = (process.env.ENV === 'development');
 const entry = ['./src/frontend/index.js'];
@@ -15,7 +16,7 @@ module.exports = {
   mode: process.env.ENV,
   output: {
     path: path.resolve(__dirname, 'src/server/public'),
-    filename: 'assets/app.js',
+    filename: isDev ? 'assets/app.js' : 'assets/app-[hash].js',
     publicPath: '/',
   },
   resolve: {
@@ -45,7 +46,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|PNG|gif|jpg|webp)$/,
+        test: /\.(png|PNG|gif|jpg|webp|ico)$/,
         use: [
           {
             'loader': 'file-loader',
@@ -68,9 +69,10 @@ module.exports = {
         test: /\.js$|\.css$/,
         filename: '[path].gz'
       }),
-    new webpack.HotModuleReplacementPlugin(),
+    isDev ? () => { } :
+      new ManifestPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'assets/app.css',
+      filename: isDev ? 'assets/app.css' : 'assets/app-[hash].css',
     }),
   ],
 };

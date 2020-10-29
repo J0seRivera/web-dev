@@ -12,7 +12,9 @@ import webpack from 'webpack';
 import reducer from '../frontend/reducers';
 import initialState from '../frontend/initialState';
 import serverRoutes from '../frontend/routes/serverRoutes';
-
+import getManifest from './getManifest';
+import ico from '../../public/favicon.ico';
+import { idText } from 'typescript';
 dotenv.config();
 
 const { ENV, PORT } = process.env;
@@ -28,20 +30,26 @@ if (ENV === 'development') {
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(webpackHotMiddleware(compiler));
 } else {
+  app.use((req, res, next) => {
+    if (!req.hashManifest) req.hashManifest = getManifest();
+    next();
+  });
   app.use(express.static(`${__dirname}/public`));
   app.use(helmet());
   app.use(helmet.permittedCrossDomainPolicies());
   app.disable('x-powered-by');
 }
 
-const setResponse = (html, preloadedState) => {
+const setResponse = (html, preloadedState, manifest) => {
+  const mainStyles = manifest ? manifest['main.css'] : 'assets/app.css';
+  const mainBuild = manifest ? manifest['main.js'] : 'assets/app.js';
   return (`
   <!DOCTYPE html>
   <html lang="en">
     <head>
       <meta charset="utf-8" />
-      <link rel="stylesheet" href="assets/app.css" type="text/css">
-      <link rel="icon" href="../src/assets/static/icoima.ico" />
+      <link rel="stylesheet" href="${mainStyles}" type="text/css">
+      <link rel="icon" href="${ico}" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content="Web site created using create-react-app" />
       <title>PD Motor Shop</title>
@@ -51,7 +59,7 @@ const setResponse = (html, preloadedState) => {
       <script>
         window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
       </script>
-      <script src="assets/app.js" type="text/javascript"></script>
+      <script src="${mainBuild}" type="text/javascript"></script>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -70,7 +78,7 @@ const renderApp = (req, res) => {
       </StaticRouter>
     </Provider>,
   );
-  res.send(setResponse(html, preloadedState));
+  res.send(setResponse(html, preloadedState, req.hashManifest));
 };
 
 app.get('*', renderApp);
