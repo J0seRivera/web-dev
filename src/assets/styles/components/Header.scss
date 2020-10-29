@@ -82,8 +82,9 @@ header ol li {
   }
 
   .header__menu--profile img {
-    margin-right: 8px;
-
+    margin-right: 12px;
+    border-radius: 100%;
+    width: 60px;
   }
 
   .header__menu--profile p {
