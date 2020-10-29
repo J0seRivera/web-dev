@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "md5": "^2.3.0",
+    "nodemon": "^2.0.6",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -27,7 +28,7 @@
     "build": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:dev": "node src/server/index"
+    "start:dev": "nodemon src/server/index"
   },
   "eslintConfig": {
     "extends": "react-app"

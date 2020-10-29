@@ -1,23 +1,6 @@
 /* eslint-disable global-require */
 import express from 'express';
-
-const app = express();
-app.get('*', (req, res) => {
-  res.send({ hello: 'express' });
-});
-
-
-app.listen(3000, (err) => {
-  if (err) console.log(err);
-  else console.log('Server running 3000');
-});
-
-
-
-/*
 import dotenv from 'dotenv';
-import webpack from 'webpack';
-import { expr } from 'jquery';
 
 dotenv.config();
 
@@ -25,6 +8,26 @@ const { ENV, PORT } = process.env;
 const app = express();
 
 if (ENV === 'development') {
+  console.log('development config');
+}
+
+app.get('*', (req, res) => {
+  res.send({ hello: 'express' });
+});
+
+app.listen(PORT, (err) => {
+  if (err) console.log(err);
+  else console.log('Server running 3000');
+});
+
+
+
+/*
+
+import webpack from 'webpack';
+import { expr } from 'jquery';
+
+
   console.log('Development config');
   const webpackConfig = require('../../webpack.config');
   const webpackDevMiddleware = require('webpack-dev-middleware')
