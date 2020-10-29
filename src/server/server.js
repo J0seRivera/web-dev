@@ -1,7 +1,16 @@
 /* eslint-disable global-require */
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { StaticRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 import express from 'express';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
+import reducer from '../frontend/reducers';
+import initialState from '../frontend/initialState';
+import serverRoutes from '../frontend/routes/serverRoutes';
 
 dotenv.config();
 
@@ -20,8 +29,8 @@ if (ENV === 'development') {
 
 }
 
-app.get('*', (req, res) => {
-  res.send(`
+const setResponse = (html, preloadedState) => {
+  return (`
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -33,7 +42,10 @@ app.get('*', (req, res) => {
       <title>PD Motor Shop</title>
     </head>
     <body>
-      <div id="root"></div>
+      <div id="root">${html}</div>
+      <script>
+        window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+      </script>
       <script src="assets/app.js" type="text/javascript"></script>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -41,7 +53,22 @@ app.get('*', (req, res) => {
     </body>
   </html>
   `);
-});
+};
+
+const renderApp = (req, res) => {
+  const store = createStore(reducer, initialState);
+  const preloadedState = store.getState();
+  const html = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={{}}>
+        {renderRoutes(serverRoutes)}
+      </StaticRouter>
+    </Provider>,
+  );
+  res.send(setResponse(html, preloadedState));
+};
+
+app.get('*', renderApp);
 
 app.listen(PORT, (err) => {
   if (err) console.log(err);

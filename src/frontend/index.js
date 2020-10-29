@@ -10,15 +10,15 @@ import 'jquery/dist/jquery.slim.min';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import App from './routes/App';
 
-import initialState from './initialState';
-
 const history = createBrowserHistory();
-const store = createStore(reducer, initialState);
+const preloadedState = window.__PRELOADED_STATE__;
+const store = createStore(reducer, preloadedState);
 
+delete window.__PRELOADED_STATE__;
 /*import Mainpage from './pages/Mainpage';*/
 const mainPage = document.getElementById('root');
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <Provider store={store}>
     <Router history={history}>
       <App />
