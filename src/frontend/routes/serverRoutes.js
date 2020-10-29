@@ -4,6 +4,7 @@ import Register from '../containers/Register';
 import NotFound from '../containers/NotFound';
 import Catalog from '../containers/Catalog';
 import Contact from '../containers/Contact';
+// eslint-disable-next-line import/no-unresolved
 import AboutUs from '../containers/AboutUs';
 import InsertCar from '../containers/InsertCar';
 import AddUser from '../containers/AddUser';
