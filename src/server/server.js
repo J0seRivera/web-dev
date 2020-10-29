@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import express from 'express';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
@@ -39,8 +40,7 @@ app.get('*', (req, res) => {
         crossorigin="anonymous"></script>
     </body>
   </html>
-  `
-  );
+  `);
 });
 
 app.listen(PORT, (err) => {
