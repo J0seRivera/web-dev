@@ -1,10 +1,11 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../assets/styles/components/Login.scss';
-import { loginRequest } from '../actions';
+import { loginUser } from '../actions';
 import googleIcon from '../assets/static/icons/google-icon.webp';
 import twitterIcon from '../assets/static/icons/twitter-icon.webp';
 import Layout from '../components/Layout';
@@ -23,8 +24,7 @@ const Login = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.loginRequest(form);
-    props.history.push('/');
+    props.loginUser(form, '/');
   };
   return (
     <Layout>
@@ -46,7 +46,7 @@ const Login = (props) => {
               placeholder='Contraseña'
               onChange={handleInput}
             />
-            <button className='Login__button'>Iniciar sesion</button>
+            <button className='Login__button' type="submit">Iniciar sesion</button>
             <div className='login__container--remember-me'>
               <label>
                 <input type='checkbox' id='cbox1' value='checkbox' />
@@ -77,7 +77,12 @@ const Login = (props) => {
 };
 
 const mapDispatchToProps = {
-  loginRequest,
+  loginUser,
 };
+
+Login.propTypes = {
+  loginUser: PropTypes.func,
+};
+
 
 export default connect(null, mapDispatchToProps)(Login);
