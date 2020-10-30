@@ -5,6 +5,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 require('dotenv').config();
+
 const isDev = (process.env.ENV === 'development');
 const entry = ['./src/frontend/index.js'];
 if (isDev) {
@@ -28,12 +29,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -73,7 +68,7 @@ module.exports = {
     isDev ? () => { } :
       new CompressionWebpackPlugin({
         test: /\.js$|\.css$/,
-        filename: '[path].gz'
+        filename: '[path].gz',
       }),
     isDev ? () => { } :
       new ManifestPlugin(),

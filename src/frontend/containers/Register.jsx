@@ -1,8 +1,9 @@
 /* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { registerRequest } from '../actions';
+import { registerUser } from '../actions';
 import '../assets/styles/components/Login.scss';
 import Layout from '../components/Layout';
 
@@ -22,8 +23,7 @@ const Register = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.registerRequest(form);
-    props.history.push('/');
+    props.registerUser(form, '/login');
   };
   return (
     <Layout>
@@ -52,7 +52,7 @@ const Register = (props) => {
               placeholder='Contraseña'
               onChange={handleInput}
             />
-            <button className='Login__button'>Registrarme</button>
+            <button type='submit' className='Login__button'>Registrarme</button>
           </form>
           <div className='login__container--inicio'>
             <Link to='/login'>Iniciar sesión</Link>
@@ -64,7 +64,11 @@ const Register = (props) => {
 };
 
 const mapDispatchToProps = {
-  registerRequest,
+  registerUser,
 };
+
+Register.propTypes = {
+  registerUser: PropTypes.func,
+}
 
 export default connect(null, mapDispatchToProps)(Register);
