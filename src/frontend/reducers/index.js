@@ -1,14 +1,17 @@
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_FAVORITE':
+      const exist = state.favoritos.find(item => item.id === action.payload.id)
+      if (exist) return { ...state }
+
       return {
         ...state,
-        myList: [...state.myList, action.payload],
-      };
+        favoritos: [...state.favoritos, action.payload]
+      }
     case 'DELETE_FAVORITE':
       return {
         ...state,
-        myList: state.myList.filter((items) => items.id !== action.payload),
+        favoritos: state.favoritos.filter((items) => items.id !== action.payload),
       };
     case 'LOGIN_REQUEST':
       return {
@@ -28,7 +31,7 @@ const reducer = (state, action) => {
     case 'GET_VEHICLE_SOURCE':
       return {
         ...state,
-        viewing: state.trends.find((item) => item.id === Number(action.payload)) ||
+        viewing: state.vehiculos.find((item) => item.id === Number(action.payload)) ||
           [],
       };
     default:

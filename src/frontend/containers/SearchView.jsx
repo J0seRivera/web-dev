@@ -2,7 +2,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
-
 import Header from '../components/Header';
 import CarIni from '../components/CarIni';
 import Search from '../components/Search';
@@ -16,14 +15,14 @@ import '../assets/styles/App.scss';
 import Favorites from '../components/Favorites';
 
 //const API = 'http://localhost:3000/initalState';
-const SearchView = ({ myList, trends }) => {
+const SearchView = ({ favoritos, vehiculos }) => {
   //const initialState = useInitialState(API);
   return (
     <div className='App'>
       <Header />
       <CarIni />
       <Search />
-      {myList.length > 0 &&
+      {favoritos.length > 0 &&
         <Favorites />}
 
       <Categories title='Autos recientemente ingresados' />
@@ -31,7 +30,7 @@ const SearchView = ({ myList, trends }) => {
       <MainSection>
         <Filter />
         <Carousel>
-          {trends.map((item) => <CarouselItem key={item.id} {...item} />)}
+          {vehiculos.map((item) => <CarouselItem key={item.id} {...item} />)}
         </Carousel>
       </MainSection>
       <Footer />
@@ -41,8 +40,8 @@ const SearchView = ({ myList, trends }) => {
 
 const mapStateToProps = (state) => {
   return {
-    myList: state.myList,
-    trends: state.trends,
+    favoritos: state.favoritos,
+    vehiculos: state.vehiculos,
   };
 };
 

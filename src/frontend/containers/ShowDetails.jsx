@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getVehicleSource } from '../actions';
-import { Redirect } from 'react-router-dom';
 import Carousel from '../components/Carousel';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
