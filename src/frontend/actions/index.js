@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const setFavorite = (payload) => ({
   type: 'SET_FAVORITE',
   payload,
@@ -27,3 +29,14 @@ export const getVehicleSource = (payload) => ({
   type: 'GET_VEHICLE_SOURCE',
   payload,
 });
+
+export const registerUser = (payload, redirectUrl) => {
+  return (dispatch) => {
+    axios.post('/auth/sign-up', payload)
+      .then(({ data }) => dispatch(registerRequest(data)))
+      .then(() => {
+        window.location.href = redirectUrl
+      })
+      .catch(error => dispatch(setError(error)))
+  };
+};

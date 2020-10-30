@@ -21,3 +21,27 @@
   width: 100%;
   text-align: center;
 }
+
+.fondo {
+  background: linear-gradient(#0f3057, #008891);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*ubica los elementos de arriba a abajo*/
+  flex-direction: column;
+  padding: 0px 30px;
+  min-height: calc(100vh - 200px);
+
+}
+
+.fondoedit {
+  background: linear-gradient(#31112c, #7d0633);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*ubica los elementos de arriba a abajo*/
+  flex-direction: column;
+  padding: 0px 30px;
+  min-height: calc(100vh - 200px);
+
+}
