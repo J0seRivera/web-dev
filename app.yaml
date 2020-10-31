@@ -1,0 +1,8 @@
+# [START gae_quickstart_yaml]
+runtime: nodejs10
+env_variables:
+ API_URL: https://bachend-pdmshop.ue.r.appspot.com
+ API_KEY_TOKEN: c3da4e33dd03c046409038211c39748a8eb555d66029a19306f7136de4340a49
+ GOOGLE_CLIENT_ID: 904077220309-uj9nneltlbukkd9ndid8guvslq70ajte.apps.googleusercontent.com
+ GOOGLE_CLIENT_SECRET: 256GYP42Qhvaq3AeF_cG2fc_
+# [END gae_quickstart_yaml]

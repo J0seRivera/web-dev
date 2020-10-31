@@ -18,7 +18,7 @@ import cookieParser from 'cookie-parser';
 import boom from '@hapi/boom';
 
 import ico from '../../public/favicon.ico';
-
+const { config } = require("./config");
 dotenv.config();
 
 const { ENV, PORT } = process.env;
@@ -31,7 +31,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 //basic strategy
 require('./utils/auth/strategies/basic');
-
+//oauth strategy
+require('./utils/auth/strategies/oauth');
+require("./utils/auth/strategies/google");
+require("./utils/auth/strategies/facebook");
 if (ENV === 'development') {
   console.log('Development config');
   const webpackConfig = require('../../webpack.config');
@@ -84,55 +87,44 @@ const renderApp = async (req, res) => {
   let initialState;
   const { token, email, name, id } = req.cookies;
 
+  try {
+    let vehicleList = await axios({
+      url: `${process.env.API_URL}/api/vehicles`,
+      headers: { Authorization: `Bearer ${token}` },
+      method: 'get',
+    });
 
-  /*
-    try {
-      let vehicleList = await axios({
-        url: `${process.env.API_URL}/api/vehicles`,
-        headers: { Authorization: `Bearer ${token}` },
-        method: 'get',
+    vehicleList = vehicleList.data.data;
+
+    let userVehicles = await axios({
+      url: `${process.env.API_URL}/api/user-vehicles/?userId=${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'get',
+    });
+
+    userVehicles = userVehicles.data.data;
+    const myList = [];
+    userVehicles.forEach((userVehicle) => {
+      vehicleList.forEach((vehiculo) => {
+        if (vehiculo._id === userVehicle.vehicleId) {
+          myList.push(vehiculo);
+        }
       });
-      vehicleList = vehicleList.data.data;
-      initialState = {
-        user: {
-          id, email, name,
-        },
-        favoritos: {},
-        vehiculos: vehiculos.filte(vehiculo => vehiculo.marca === "marca" && vehiculo._id)
-      }
-    } catch (err) {
-      initialState = {
-        user: {},
-        favoritos: {},
-        vehiculos: []
-      }
-    }*/
-
-  if (id) {
+    });
     initialState = {
       user: {
-        email, name, id
+        id, email, name,
       },
-      favoritos: {},
-      vehiculos: [
-        {
-          'id': 2,
-          'slug': 'tvshow-2',
-          'title': 'In the Dark',
-          'type': 'Scripted',
-          'language': 'English',
-          'year': 2009,
-          'contentRating': '16+',
-          'duration': 164,
-          'cover': 'http://dummyimage.com/800x600.png/99118E/ffffff',
-          'description': 'Vestibulum ac est lacinia nisi venenatis tristique',
-          'source': 'https://mdstrm.com/video/58333e214ad055d208427db5.mp4',
-        },
-      ],
+      myList,
+      favoritos: [],
+      vehiculos: vehicleList.filter(vehiculo => vehiculo.comentario === "full equipo" && vehiculo._id)
     }
-  } else {
+  } catch (err) {
     initialState = {
       user: {},
+      myList: [],
       favoritos: {},
       vehiculos: []
     }
@@ -205,6 +197,106 @@ app.post('/auth/sign-up', async (req, res, next) => {
     next(error);
   }
 });
+
+app.post('/user-vehicles', async (req, res, next) => {
+  try {
+    const { body: userVehicle } = req;
+    const { token } = req.cookies;
+
+    const { data, status } = await axios({
+      url: `${process.env.API_URL}/api/user-vehicles`,
+      headers: { Authorization: `Bearer ${token}` },
+      method: 'post',
+      data: userVehicle,
+    });
+
+    if (status !== 201) {
+      return next(boom.badImplementation());
+    }
+
+    res.status(201).json(data);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.delete('/user-vehicle/:userVehicleId', async (req, res, next) => {
+  try {
+    const { userVehicleId } = req.params;
+    const { token, id } = req.cookies;
+
+    let userVehicles = await axios({
+      url: `${process.env.API_URL}/api/user-vehicles/?userId=${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'get',
+    });
+    userVehicles = userVehicles.data.data;
+
+    const listDelete = userVehicles.filter((vehiculo) => vehiculo.movieId === userVehicleId);
+    const { data, status } = await axios({
+      url: `${process.env.API_URL}/api/user-vehicles/${listDelete[0]._id}`,
+      headers: { Authorization: `Bearer ${token}` },
+      method: 'delete',
+    });
+
+    if (status !== 200) {
+      return next(boom.badImplementation());
+    }
+
+    res.status(200).json(data);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["email", "profile", "openid"]
+  })
+);
+
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", { session: false }),
+  function (req, res, next) {
+    if (!req.user) {
+      next(boom.unauthorized());
+    }
+
+    const { token, ...user } = req.user;
+
+    res.cookie("token", token, {
+      httpOnly: !config.dev,
+      secure: !config.dev
+    });
+
+    res.status(200).json(user);
+  }
+);
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", { session: false }),
+  function (req, res, next) {
+    if (!req.user) {
+      next(boom.unauthorized());
+    }
+
+    const { token, ...user } = req.user;
+
+    res.cookie("token", token, {
+      httpOnly: !config.dev,
+      secure: !config.dev
+    });
+
+    res.status(200).json(user);
+  }
+);
 app.get('*', renderApp);
 
 app.listen(PORT, (err) => {
