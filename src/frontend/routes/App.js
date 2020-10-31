@@ -14,10 +14,10 @@ import ShowDetails from '../containers/ShowDetails';
 import EditCar from '../containers/EditCar';
 import EditUser from '../containers/EditUser.';
 
-const App = () => (
+const App = ({ isLogged }) => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={SearchView} />
+      <Route exact path="/" component={isLogged ? SearchView : Login} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/catalog" component={Catalog} />

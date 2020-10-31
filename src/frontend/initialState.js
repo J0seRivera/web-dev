@@ -1,8 +1,8 @@
 const initialState = {
   'user': {},
   'viewing': {},
-  'myList': [],
-  'trends': [
+  'favoritos': [],
+  'vehiculos': [
     {
       'id': 2,
       'slug': 'tvshow-2',
