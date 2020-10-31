@@ -18,7 +18,7 @@ import cookieParser from 'cookie-parser';
 import boom from '@hapi/boom';
 
 import ico from '../../public/favicon.ico';
-
+const { config } = require("./config");
 dotenv.config();
 
 const { ENV, PORT } = process.env;
@@ -31,7 +31,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 //basic strategy
 require('./utils/auth/strategies/basic');
-
+//oauth strategy
+require('./utils/auth/strategies/oauth');
+require("./utils/auth/strategies/google");
+require("./utils/auth/strategies/facebook");
 if (ENV === 'development') {
   console.log('Development config');
   const webpackConfig = require('../../webpack.config');
@@ -201,7 +204,7 @@ app.post('/user-vehicles', async (req, res, next) => {
     const { token } = req.cookies;
 
     const { data, status } = await axios({
-      url: `${process.env.API_URL}/api/user-movies`,
+      url: `${process.env.API_URL}/api/user-vehicles`,
       headers: { Authorization: `Bearer ${token}` },
       method: 'post',
       data: userVehicle,
@@ -223,7 +226,7 @@ app.delete('/user-vehicle/:userVehicleId', async (req, res, next) => {
     const { token, id } = req.cookies;
 
     let userVehicles = await axios({
-      url: `${process.env.API_URL}/api/user-vehicle/?userId=${id}`,
+      url: `${process.env.API_URL}/api/user-vehicles/?userId=${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -248,6 +251,52 @@ app.delete('/user-vehicle/:userVehicleId', async (req, res, next) => {
   }
 });
 
+app.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["email", "profile", "openid"]
+  })
+);
+
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", { session: false }),
+  function (req, res, next) {
+    if (!req.user) {
+      next(boom.unauthorized());
+    }
+
+    const { token, ...user } = req.user;
+
+    res.cookie("token", token, {
+      httpOnly: !config.dev,
+      secure: !config.dev
+    });
+
+    res.status(200).json(user);
+  }
+);
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", { session: false }),
+  function (req, res, next) {
+    if (!req.user) {
+      next(boom.unauthorized());
+    }
+
+    const { token, ...user } = req.user;
+
+    res.cookie("token", token, {
+      httpOnly: !config.dev,
+      secure: !config.dev
+    });
+
+    res.status(200).json(user);
+  }
+);
 app.get('*', renderApp);
 
 app.listen(PORT, (err) => {

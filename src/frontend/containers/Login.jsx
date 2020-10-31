@@ -56,10 +56,10 @@ const Login = (props) => {
             </div>
           </form>
           <section className='login__container--social-media'>
-            <div>
+            <a href="http://localhost:8080/auth/google">
               <img src={googleIcon} alt='Google' />
               Iniciar sesión con Google
-            </div>
+            </a>
             <div>
               <img src={twitterIcon} alt='Twitter' />
               Iniciar sesión con Twitter

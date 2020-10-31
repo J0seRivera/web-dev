@@ -5,10 +5,43 @@ export const setFavorite = (payload) => ({
   payload,
 });
 
+export const postFavorite = (userId, vehicleId, vehiculo) => {
+  return (dispatch) => {
+    const body = {
+      userId,
+      vehicleId,
+    };
+    axios.post('/user-vehicles', body)
+      .then(({ data }) => {
+        const {
+          data: { vehicleExist },
+        } = data;
+
+        if (!vehicleExist) {
+          dispatch(setFavorite(vehiculo));
+        }
+
+      })
+      .catch((error) => dispatch(setError(error)));
+  };
+};
+
 export const deleteFavorite = (payload) => ({
   type: 'DELETE_FAVORITE',
   payload,
 });
+
+export const dropFavorite = (userVehicleId, vehicleId) => {
+  return (dispatch) => {
+    axios.delete(`/user-movies/${userVehicleId}`)
+      .then(({ status }) => {
+        if (status === 200) {
+          dispatch(deleteFavorite(vehicleId));
+        }
+      })
+      .catch((error) => dispatch(setError(error)));
+  };
+};
 
 export const loginRequest = (payload) => ({
   type: 'LOGIN_REQUEST',
