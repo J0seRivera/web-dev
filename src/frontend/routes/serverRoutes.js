@@ -13,8 +13,8 @@ import ShowDetails from '../containers/ShowDetails';
 const serverRoutes = (isLogged) => {
   return [
     {
-      exact: true,
       path: '/',
+      exact: true,
       component: isLogged ? SearchView : Login,
     },
     {
@@ -61,7 +61,7 @@ const serverRoutes = (isLogged) => {
       name: 'NotFound',
       component: NotFound,
     },
-  ];
+  ]
 }
 
 export default serverRoutes;
