@@ -84,60 +84,59 @@ const renderApp = async (req, res) => {
   let initialState;
   const { token, email, name, id } = req.cookies;
 
-
-  /*
-    try {
-      let vehicleList = await axios({
-        url: `${process.env.API_URL}/api/vehicles`,
-        headers: { Authorization: `Bearer ${token}` },
-        method: 'get',
-      });
-      vehicleList = vehicleList.data.data;
-      initialState = {
-        user: {
-          id, email, name,
-        },
-        favoritos: {},
-        vehiculos: vehiculos.filte(vehiculo => vehiculo.marca === "marca" && vehiculo._id)
-      }
-    } catch (err) {
-      initialState = {
-        user: {},
-        favoritos: {},
-        vehiculos: []
-      }
-    }*/
-
-  if (id) {
+  try {
+    let vehicleList = await axios({
+      url: `${process.env.API_URL}/api/vehicles`,
+      headers: { Authorization: `Bearer ${token}` },
+      method: 'get',
+    });
+    vehicleList = vehicleList.data.data;
     initialState = {
       user: {
-        email, name, id
+        id, email, name,
       },
-      favoritos: {},
-      vehiculos: [
-        {
-          'id': 2,
-          'slug': 'tvshow-2',
-          'title': 'In the Dark',
-          'type': 'Scripted',
-          'language': 'English',
-          'year': 2009,
-          'contentRating': '16+',
-          'duration': 164,
-          'cover': 'http://dummyimage.com/800x600.png/99118E/ffffff',
-          'description': 'Vestibulum ac est lacinia nisi venenatis tristique',
-          'source': 'https://mdstrm.com/video/58333e214ad055d208427db5.mp4',
-        },
-      ],
+      favoritos: [],
+      vehiculos: vehicleList.filter(vehiculo => vehiculo.marca === "marca" && vehiculo._id)
     }
-  } else {
+  } catch (err) {
     initialState = {
       user: {},
       favoritos: {},
       vehiculos: []
     }
   }
-
+  /*
+  
+    if (id) {
+      initialState = {
+        user: {
+          email, name, id
+        },
+        favoritos: {},
+        vehiculos: [
+          {
+            'id': 2,
+            'slug': 'tvshow-2',
+            'title': 'In the Dark',
+            'type': 'Scripted',
+            'language': 'English',
+            'year': 2009,
+            'contentRating': '16+',
+            'duration': 164,
+            'cover': 'http://dummyimage.com/800x600.png/99118E/ffffff',
+            'description': 'Vestibulum ac est lacinia nisi venenatis tristique',
+            'source': 'https://mdstrm.com/video/58333e214ad055d208427db5.mp4',
+          },
+        ],
+      }
+    } else {
+      initialState = {
+        user: {},
+        favoritos: {},
+        vehiculos: []
+      }
+    }
+  */
   const store = createStore(reducer, initialState);
   const preloadedState = store.getState();
   const isLogged = (initialState.user.id);
