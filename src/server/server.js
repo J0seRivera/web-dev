@@ -90,17 +90,38 @@ const renderApp = async (req, res) => {
       headers: { Authorization: `Bearer ${token}` },
       method: 'get',
     });
+
     vehicleList = vehicleList.data.data;
+
+    let userVehicles = await axios({
+      url: `${process.env.API_URL}/api/user-vehicles/?userId=${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'get',
+    });
+
+    userVehicles = userVehicles.data.data;
+    const myList = [];
+    userVehicles.forEach((userVehicle) => {
+      vehicleList.forEach((vehiculo) => {
+        if (vehiculo._id === userVehicle.vehicleId) {
+          myList.push(vehiculo);
+        }
+      });
+    });
     initialState = {
       user: {
         id, email, name,
       },
+      myList,
       favoritos: [],
       vehiculos: vehicleList.filter(vehiculo => vehiculo.comentario === "full equipo" && vehiculo._id)
     }
   } catch (err) {
     initialState = {
       user: {},
+      myList: [],
       favoritos: {},
       vehiculos: []
     }
@@ -173,6 +194,60 @@ app.post('/auth/sign-up', async (req, res, next) => {
     next(error);
   }
 });
+
+app.post('/user-vehicles', async (req, res, next) => {
+  try {
+    const { body: userVehicle } = req;
+    const { token } = req.cookies;
+
+    const { data, status } = await axios({
+      url: `${process.env.API_URL}/api/user-movies`,
+      headers: { Authorization: `Bearer ${token}` },
+      method: 'post',
+      data: userVehicle,
+    });
+
+    if (status !== 201) {
+      return next(boom.badImplementation());
+    }
+
+    res.status(201).json(data);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.delete('/user-vehicle/:userVehicleId', async (req, res, next) => {
+  try {
+    const { userVehicleId } = req.params;
+    const { token, id } = req.cookies;
+
+    let userVehicles = await axios({
+      url: `${process.env.API_URL}/api/user-vehicle/?userId=${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'get',
+    });
+    userVehicles = userVehicles.data.data;
+
+    const listDelete = userVehicles.filter((vehiculo) => vehiculo.movieId === userVehicleId);
+    const { data, status } = await axios({
+      url: `${process.env.API_URL}/api/user-vehicles/${listDelete[0]._id}`,
+      headers: { Authorization: `Bearer ${token}` },
+      method: 'delete',
+    });
+
+    if (status !== 200) {
+      return next(boom.badImplementation());
+    }
+
+    res.status(200).json(data);
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.get('*', renderApp);
 
 app.listen(PORT, (err) => {

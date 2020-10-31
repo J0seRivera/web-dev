@@ -30,7 +30,7 @@ const CarouselItem = (props) => {
 
         <div className='carousel-item__details'>
           <div>
-            <Link to={`/details/${id}`}>
+            <Link to={`/details/?userId=${id}`}>
               <img
                 src={seeIcon}
                 alt='see icon'
