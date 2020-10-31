@@ -6,7 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 require('dotenv').config();
 
-const isDev = (process.env.ENV === 'production');
+const isDev = (process.env.ENV === 'development');
 const entry = ['./src/frontend/index.js'];
 if (isDev) {
   entry.push('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&reload=true');
