@@ -6,17 +6,16 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import axios from 'axios';
+import passport from 'passport';
 import express from 'express';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
 import reducer from '../frontend/reducers';
-import initialState from '../frontend/initialState';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
 import cookieParser from 'cookie-parser';
 import boom from '@hapi/boom';
-import passport from 'passport';
-import axios from 'axios';
 
 import ico from '../../public/favicon.ico';
 
@@ -81,66 +80,112 @@ const setResponse = (html, preloadedState, manifest) => {
   `);
 };
 
-const renderApp = (req, res) => {
+const renderApp = async (req, res) => {
+  let initialState;
+  const { token, email, name, id } = req.cookies;
+
+
+  /*
+    try {
+      let vehicleList = await axios({
+        url: `${process.env.API_URL}/api/vehicles`,
+        headers: { Authorization: `Bearer ${token}` },
+        method: 'get',
+      });
+      vehicleList = vehicleList.data.data;
+      initialState = {
+        user: {
+          id, email, name,
+        },
+        favoritos: {},
+        vehiculos: vehiculos.filte(vehiculo => vehiculo.marca === "marca" && vehiculo._id)
+      }
+    } catch (err) {
+      initialState = {
+        user: {},
+        favoritos: {},
+        vehiculos: []
+      }
+    }*/
+
+  if (id) {
+    initialState = {
+      user: {
+        email, name, id
+      },
+      favoritos: {},
+      vehiculos: []
+    }
+  } else {
+    initialState = {
+      user: {},
+      favoritos: {},
+      vehiculos: []
+    }
+  }
+
   const store = createStore(reducer, initialState);
   const preloadedState = store.getState();
+  const isLogged = (initialState.user.id);
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={{}}>
-        {renderRoutes(serverRoutes)}
+        {renderRoutes(serverRoutes(isLogged))}
       </StaticRouter>
     </Provider>,
   );
   res.send(setResponse(html, preloadedState, req.hashManifest));
 };
 
-app.post('/auth/sign-in', async function (req, res, next) {
-  // Obtenemos el atributo rememberMe desde el cuerpo del request
-  const { rememberMe } = req.body;
 
-  passport.authenticate('basic', function (error, data) {
+// Obtenemos el atributo rememberMe desde el cuerpo del request
+// const { rememberMe } = req.body;
+
+app.post('/auth/sign-in', async (req, res, next) => {
+  passport.authenticate('basic', (error, data) => {
     try {
       if (error || !data) {
         next(boom.unauthorized());
       }
 
-      req.login(data, { session: false }, async function (error) {
-        if (error) {
-          next(error);
+      req.login(data, { session: false }, async (err) => {
+        if (err) {
+          next(err);
         }
+
         const { token, ...user } = data;
 
-        // Si el atributo rememberMe es verdadero la expiración será en 30 dias
-        // de lo contrario la expiración será en 2 horas
         res.cookie('token', token, {
-          httpOnly: !config.dev,
-          secure: !config.dev,
-          maxAge: rememberMe ? THIRTY_DAYS_IN_SEC : TWO_HOURS_IN_SEC
+          httpOnly: !(ENV === 'development'),
+          secure: !(ENV === 'development'),
         });
+
         res.status(200).json(user);
       });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   })(req, res, next);
 });
 
-app.post('/auth/sign-up', async function (req, res, next) {
+app.post('/auth/sign-up', async (req, res, next) => {
   const { body: user } = req;
+
   try {
     const userData = await axios({
       url: `${process.env.API_URL}/api/auth/sign-up`,
       method: 'post',
       data: {
-        'email': user.email,
         'name': user.name,
-        'password': user.password
-      }
+        'email': user.email,
+        'password': user.password,
+      },
     });
+
     res.status(201).json({
-      email: req.body.email,
       name: req.body.name,
-      id: userData.id
+      email: req.body.email,
+      id: userData.data.id,
     });
   } catch (error) {
     next(error);

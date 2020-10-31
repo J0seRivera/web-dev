@@ -30,6 +30,11 @@ export const getVehicleSource = (payload) => ({
   payload,
 });
 
+export const setError = payload => ({
+  type: 'SET_ERROR',
+  payload,
+});
+
 export const registerUser = (payload, redirectUrl) => {
   return (dispatch) => {
     axios.post('/auth/sign-up', payload)
@@ -39,4 +44,27 @@ export const registerUser = (payload, redirectUrl) => {
       })
       .catch(error => dispatch(setError(error)))
   };
+};
+
+export const loginUser = ({ email, password }, redirectUrl) => {
+  return (dispatch) => {
+    axios({
+      url: '/auth/sign-in/',
+      method: 'post',
+      auth: {
+        username: email,
+        password
+      },
+    })
+      .then(({ data }) => {
+        document.cookie = `email=${data.user.email}`;
+        document.cookie = `name=${data.user.name}`;
+        document.cookie = `id=${data.user.id}`;
+        dispatch(loginRequest(data.user));
+      })
+      .then(() => {
+        window.location.href = redirectUrl;
+      })
+      .catch(err => dispatch(setError(err)));
+  }
 };

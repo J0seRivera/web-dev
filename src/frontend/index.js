@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
@@ -23,7 +23,7 @@ const mainPage = document.getElementById('root');
 ReactDOM.hydrate(
   <Provider store={store}>
     <Router history={history}>
-      <App />
+      <App isLogged={(preloadedState.user.id)} />
     </Router>
   </Provider>,
   mainPage,
